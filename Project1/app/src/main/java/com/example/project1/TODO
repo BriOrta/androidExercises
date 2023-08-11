@@ -1,0 +1,11 @@
+Get data from https://hf-android-app.s3-eu-west-1.amazonaws.com/android-test/recipes.json
+Libraries: 1.- Retrofit, 2.- gson (serializer - mapper)
+
+Create ViewModel to get data through Retrofit and use the serializer to map the recipes to that data.
+ViewModel - init - Use retrofit to get the data and initialize the list of recipes.
+Send it to liveData<list>
+
+On activity call the viewmodel and livedata.observe (subscribe) (onEvent = this, onList -> instructions)
+setAdapter to recyclerview that we found on the layout
+
+Set LayoutManager of RecyclerView in main activity to see everything
