@@ -11,11 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 class RecipeViewHolder(private val rootView : View) : RecyclerView.ViewHolder(rootView) {
     // Find views in the layout and assign them the values of each object
     fun bind(recipe : Recipe){
-        rootView.findViewById<TextView>(R.id.title).text = recipe.title
+        rootView.findViewById<TextView>(R.id.title).text = recipe.name
         rootView.findViewById<TextView>(R.id.description).text = recipe.description
-        rootView.findViewById<TextView>(R.id.carbs).text = recipe.carbs.toString()
-        rootView.findViewById<TextView>(R.id.calories).text = recipe.calories.toString()
-        rootView.findViewById<TextView>(R.id.proteins).text = recipe.proteins.toString()
+        rootView.findViewById<TextView>(R.id.carbs).text = recipe.carbos
+        rootView.findViewById<TextView>(R.id.calories).text = recipe.calories
+        rootView.findViewById<TextView>(R.id.proteins).text = recipe.proteins
     }
 }
 
@@ -40,7 +40,7 @@ class Adapter : ListAdapter<Recipe, RecipeViewHolder>(DIFF_RECIPE) {
     // View Holder is an item, parent is the recyclerView
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
         return RecipeViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_recipe,parent)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_recipe,parent,false)
         )
     }
 
