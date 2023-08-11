@@ -8,4 +8,4 @@ Send it to liveData<list>
 On activity call the viewmodel and livedata.observe (subscribe) (onEvent = this, onList -> instructions)
 setAdapter to recyclerview that we found on the layout
 
-Set LayoutManager of RecyclerView in main activity to see everything
+Set LayoutManager of RecyclerView in main activity to see everything 
