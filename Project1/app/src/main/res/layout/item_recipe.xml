@@ -10,6 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Title"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -19,8 +20,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
         android:text="Description"
+        android:justificationMode="inter_word"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
@@ -33,25 +36,46 @@
         app:layout_constraintTop_toBottomOf="@+id/title" >
 
         <TextView
+            android:id="@+id/caloriesLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="Calories:" />
+
+        <TextView
             android:id="@+id/calories"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="Calories:666" />
+            android:layout_marginStart="5dp"
+            android:text="666 kcal" />
+
+        <TextView
+            android:id="@+id/proteinsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="Proteins:" />
 
         <TextView
             android:id="@+id/proteins"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="Proteins:666" />
+            android:layout_marginStart="5dp"
+            android:text="666 g" />
+
+        <TextView
+            android:id="@+id/carbsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="Carbs:" />
 
         <TextView
             android:id="@+id/carbs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="Carbs:666" />
+            android:layout_marginStart="5dp"
+            android:text="666 g" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
