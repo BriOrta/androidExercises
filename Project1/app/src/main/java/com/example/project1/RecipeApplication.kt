@@ -1,12 +1,13 @@
 package com.example.project1
 
 import android.app.Application
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.SupervisorJob
 
 class RecipeApplication : Application() {
-    private val aplicationScope = CoroutineScope(SupervisorJob())
+    // lazy - don't initialize until needed by any part of the app
+    //val repository by lazy { RecipeRepository(database.recipeDao()) }
 
-    private val database by lazy { RecipesDatabase.createInstance(this, aplicationScope) }
-    val repository by lazy { RecipeRepository(database.recipeDao()) }
+    override fun onCreate() {
+        super.onCreate()
+        RecipesDatabase.createInstance(this)
+    }
 }

@@ -1,18 +1,20 @@
 package com.example.project1
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class MainViewModel() : ViewModel() {
+// Link backend with UI -- (get info from repo to show to the view)
+class MainViewModel : ViewModel() {
 
     val liveDataRecipes = MutableLiveData<List<Recipe>>()
     lateinit var recipes: List<Recipe>
+
+    private val repository = RecipeRepository(RecipesDatabase.getInstance()!!.recipeDao())
 
     object RetrofitHelper {
         private const val baseUrl =
@@ -31,14 +33,14 @@ class MainViewModel() : ViewModel() {
         val retrofitInterface = RetrofitHelper.getInstance().create(RetrofitInterface::class.java)
 
         // launching a new coroutine
-        viewModelScope.launch {
+        CoroutineScope(Dispatchers.IO).launch {
             recipes = retrofitInterface.getRecipes()
             liveDataRecipes.postValue(recipes)
+            repository.insertAll(recipes)
             // Checking the results
-            for (recipe in recipes) {
-                //repository.insert(recipe)
+            /*for (recipe in recipes) {
                 Log.d("Recipe: ", recipe.toString())
-            }
+            }*/
         }
     }
 }

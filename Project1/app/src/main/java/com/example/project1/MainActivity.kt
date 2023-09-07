@@ -14,10 +14,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val viewModel = ViewModelProvider(this)[MainViewModel::class.java]
-        /*val viewModel: MainViewModel by viewModels {
-            MainViewModelFactory((application as RecipeApplication).repository)
-        }*/
-
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
         val recipeAdapter = Adapter()
         recyclerView.adapter = recipeAdapter

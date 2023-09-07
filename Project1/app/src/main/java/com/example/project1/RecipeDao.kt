@@ -26,4 +26,7 @@ interface RecipeDao {
                 "ORDER BY iddd ASC"
     )
     fun getRecipes(): List<Recipe>
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insertAll(recipes: List<Recipe>)
 }
